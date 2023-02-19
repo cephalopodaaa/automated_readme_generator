@@ -1,4 +1,13 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+
+
+fs.readFile('template.md', 'utf8', (error, data) =>
+error ? console.error(error) : console.log(data)
+);
+
+
+
 
 inquirer
     .prompt([
