@@ -14,10 +14,9 @@ inquirer
             name: 'title'
         },
         {
-            type: 'list',
+            type: 'confirm',
             message: 'Do you want a contents in your readme?',
-            name: 'contentsChoice',
-            choices: ['yes','no']
+            name: 'contentsBoolean'
         },
         {
             type: 'input',
@@ -31,7 +30,7 @@ inquirer
         },
         {
             type: 'input',
-            message: 'Provide instructions and examples for use.',
+            message: 'Provide instructions and examples for usage of your program.',
             name: 'usage'
         },
         {
@@ -41,18 +40,27 @@ inquirer
         }
     ])
     .then((response) => {
-        let makeContents;
-        response.contentsChoice === 'yes'
-            ? makeContents = true
-            : makeContents = false;
-            
-        console.log(makeContents)
-        
+        // let makeContents;
+        // response.contentsChoice === 'yes'
+        //     ? makeContents = true
+        //     : makeContents = false;
+
+        console.log(response.contentsBoolean);
+        let contents;
+        response.contentsBoolean
+            ? contents = prompt(
+                {
+                    type: 'editor',
+                    message: 'how many items do you want in your contents?',
+                    name: 'contentsChoice',
+                })
+            : console.log("cool, you don't need a contents page");
+
         const README = `
         
-\# ${response.title}
-
-\#\# Description
+        \# ${response.title}
+        
+        \#\# Description
 
 ${response.description}
 
@@ -86,15 +94,15 @@ If you followed tutorials, include links to those here as well.
 ${response.licence}
 The last section of a high - quality README file is the license.This lets other developers know what they can and cannot do with your project.If you need help choosing a license, refer to[https://choosealicense.com/](https://choosealicense.com/).
 
-        ---
+---
 
 🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document.You might also want to consider adding the following sections.
 
 ## Badges
 
-        ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
 
-            Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing.Check out the badges hosted by[shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing.Check out the badges hosted by[shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
 ## Features
 
@@ -108,10 +116,10 @@ If you created an application or package and would like other developers to cont
 
 Go the extra mile and write tests for your application.Then provide examples on how to run them here.
 
-        
-        `
+
+`
         console.log(README);
-    })
 
 
+    });
 
