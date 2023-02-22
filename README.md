@@ -10,7 +10,7 @@ This program aims to speed up the process of generating README.md files using a 
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [License](#License)
-- [How to Contribute](#How to Contribute)
+- [Contribute](#Contribute)
 - [Tests](#Tests)
 - [Questions](#Questions)
 ## Installation
