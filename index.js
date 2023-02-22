@@ -98,7 +98,7 @@ ${response.usage}
 
 ${response.licence}
 
-## How to Contribute
+## Contribute
 
 ${response.contributions}
 

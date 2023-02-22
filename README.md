@@ -1,33 +1,33 @@
 
     
-# Automated README generator
+# Automated README Generator
         
 ## Description
 
-this application will generate a readme for you from a few commandline prompts to save you lots of time
+This program aims to speed up the process of generating README.md files using a command line interface.
 
 ## Contents
-- installation
-- usage
-- licence
-- contributions
-- tests
-- questions
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#License)
+- [How to Contribute](#How to Contribute)
+- [Tests](#Tests)
+- [Questions](#Questions)
 ## Installation
 
-just run 'npm init' and 'npm install' and the required packages will install for you
+first 'npm init' and then 'npm install' to prepare the packages.
 
 ## Usage
 
-just type node index.js and the command line will ask you all the questions you need to complete your readme
+to initiate the program, run the command 'node index.js'. This can be used to generate a whole range of README.md files.
 
 ## License
 
-MIT
+MIT Licence
 
 ## How to Contribute
 
-raise a an issue on github and I will attend to it
+feel free to raise an 'Issue' via my github account (see below)
 
 ## Tests
 
