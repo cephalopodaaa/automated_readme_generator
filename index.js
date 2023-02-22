@@ -14,9 +14,9 @@ inquirer
             name: 'title'
         },
         {
-            type: 'confirm',
-            message: 'Do you want a contents in your readme?',
-            name: 'contentsBoolean'
+            type: 'input',
+            message: 'list the titles of your contents using a comma separated list (press enter for no contents)',
+            name: 'contents'
         },
         {
             type: 'input',
@@ -37,6 +37,21 @@ inquirer
             type: 'input',
             message: 'Select a Licence for the project',
             name: 'licence'
+        },
+        {
+            type: 'input',
+            message: 'If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so.The[Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you prefer.',
+            name: 'contributions'
+        },
+        {
+            type: 'input',
+            message: 'outline how you test the program',
+            name: 'tests'
+        },
+        {
+            type: 'input',
+            message: 'and finally enter your github username so people can find you!',
+            name: 'questions'
         }
     ])
     .then((response) => {
@@ -44,17 +59,24 @@ inquirer
         // response.contentsChoice === 'yes'
         //     ? makeContents = true
         //     : makeContents = false;
+        let hideContents;
+        let contentsArray;
+        response.contents
+            ? contentsparse(response.contents)
+            : hideContents = true
+        console.log(contentsArray)
 
-        console.log(response.contentsBoolean);
-        let contents;
-        response.contentsBoolean
-            ? contents = prompt(
-                {
-                    type: 'editor',
-                    message: 'how many items do you want in your contents?',
-                    name: 'contentsChoice',
-                })
-            : console.log("cool, you don't need a contents page");
+        let contentsTitle = "## Contents"
+        hideContents
+            ? contentsTitle = ""
+            : console.log("");
+
+
+
+
+
+
+
 
         const README = `
         
@@ -104,22 +126,25 @@ The last section of a high - quality README file is the license.This lets other 
 
 Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing.Check out the badges hosted by[shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
-## Features
-
-If your project has a lot of features, list them here.
-
 ## How to Contribute
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so.The[Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
+${response.contributions}
 ## Tests
 
-Go the extra mile and write tests for your application.Then provide examples on how to run them here.
+${response.tests}
+
+## Questions
+
+If you have any questions about this repo, [click here](github.com/${response.questions}) to contact me via my github.
+
 
 
 `
         console.log(README);
-
+        fs.writeFile('README.md', README, function (err) {
+            if (err) throw err;
+            console.log('README saved as markdown file');
+        });
 
     });
 
