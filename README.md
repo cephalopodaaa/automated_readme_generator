@@ -2,12 +2,9 @@
     
 # Automated README Generator
 
-## Video tutorial
-<video src='./tutorial.webm' width=\>
-
 ## Description
 
-This program aims to speed up the process of generating README.md files using a command line interface.
+This program aims to speed up the process of generating README.md files using a command line interface.gi
 
 ## Contents
 - [Installation](#Installation)
